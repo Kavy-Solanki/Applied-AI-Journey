@@ -1,0 +1,3 @@
+Chips: 40
+Cold Drink: 120
+Tissue: 20
