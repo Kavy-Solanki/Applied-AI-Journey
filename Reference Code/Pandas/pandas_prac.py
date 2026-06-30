@@ -19,12 +19,13 @@ print(df.iloc[1]) #reading a specific row
 #REMEMBER HERE [1], [1:4], etc ARE INDEXES NOT ROW NUMBER
 print(df.iloc[2,1]) #getting a specific data
 print(df.iloc[0:2,1:3]) #Get specific amount data
+#df.isnull().sum() gives all null values in each column
 
 # for index,rows in df.iterrows():
 #     print(index , rows)
 #to iterate each row, rows["Name"] for a specific column
 print(df.loc[df["Type 1"] == "Fire"]) #reading a specific amount of data based on textual or numericla info
-#can do multiple conditions also
+#can do multiple conditions also using and and or symbol between each condtion
 
 '''Sorting/Describing Data'''
 print(df.describe()) #Get all statistical data
@@ -64,6 +65,7 @@ print(df.loc[df["Type 1"].str.contains("fire|grass", flags = re.I, regex=True)])
 #regex is used to check data in which type 1 = fire or grass, | = or
 #flags = re.I to ingnore case. It tells Python to match text without caring about uppercase or lowercase letters.
 #another example: print(df.loc[df["Name"].str.contains("^pi[a-z]*", flags = re.I, regex=True)]) 
+#.nunique() used to count number of distinct onbservation. Eg: training_df['COMPANY'].nunique()
 
 '''Conditional Changes'''
 df.loc[df["Type 1"] == "Fire", "Type 1"] = "Flamer"
@@ -77,6 +79,9 @@ print(df.groupby(["Type 1"]).mean(numeric_only=True).sort_values("Defense", asce
 #Find mean of all the data by grouping Type 1, i.e keeping type 1 as the base
 #print(df.groupby(["Type 1"]).sum())
 #print(df.groupby(["Type 1"]).count()) -> 1. df["count"] = 1 -> print(df.groupby(["Type 1"]).count())["count"]
+#count = df[Type 1].value_counts() gives the count of all the type in that column directly
+#count.idmax() is used to find id of the max count
+#count.max() to get that max count itself
 #will only give the count column, can groupby with multiple columns also, like ["Tpye 1", "Type 2"]
 
 '''Working with large data'''
